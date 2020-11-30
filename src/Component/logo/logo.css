@@ -1,4 +1,12 @@
 .Tilt{
     background: rgb(135,65,37);
     background: linear-gradient(90deg, rgba(135,65,37,1) 0%, rgba(182,136,82,1) 44%, rgba(161,128,111,1) 100%);
+    z-index: 3;
+}
+.center2{
+    
+    position: relative;
+    z-index: 99;
+    margin-left: 4px;
+  
 }

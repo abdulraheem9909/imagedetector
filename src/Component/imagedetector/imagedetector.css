@@ -1,0 +1,15 @@
+.form{
+    width: 700px;
+    background-color: #D19159;
+ 
+}
+.bg-color{
+    background-color: chocolate;
+}
+.center2{
+    
+        position: relative;
+        z-index: 99;
+        display: flex;
+        justify-content: center;
+}
