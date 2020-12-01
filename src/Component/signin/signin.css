@@ -1,0 +1,8 @@
+.center2{
+    
+        position: relative;
+        transform: translate(0%, 50%);
+        z-index: 99;
+       
+    
+}

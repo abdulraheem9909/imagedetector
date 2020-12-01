@@ -1,28 +1,35 @@
-import React from 'react';
-import Navbar from './Component/navbar/nav';
-import Logo from './Component/logo/logo';
-import Imagelnkform from './Component/imagedetector/imagedetetor';  
-import Rank from './Component/rank/rank';
+import React, { Component } from 'react';
+import {Route,Switch} from 'react-router';
+import Signin from './Component/signin/Signin';
+import Home from './Component/home';
 import Particles from './UI/particles';
-import './App.css';
+import Register from './Component/Register/register';
 
-function App() {
-  return (
-    <div className="App">
-    <Particles/>
-    <Navbar />
-    <Logo/>
-    <Rank/>
-    <Imagelnkform/>
-    
+class App extends Component {
+
+ 
+ 
+
+
+  render(){
+    return (
    
-    {/* 
+      <div className="App">
+      <Particles/>
+      <Switch>
+      <Route exact path="/" component={Signin} />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/register" component={Register} />
+      </Switch>
     
-   
-    <FaceRecognizatio/>*/}
+      </div>
+      
+     
+    );
+
+  }
+ 
   
-    </div>
-  );
 }
 
 export default App;
