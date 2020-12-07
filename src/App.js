@@ -1,14 +1,47 @@
 import React, { Component } from 'react';
-import {Route,Switch} from 'react-router';
+import {Route,Switch,Redirect} from 'react-router';
 import Signin from './Component/signin/Signin';
 import Home from './Component/home';
 import Particles from './UI/particles';
 import Register from './Component/Register/register';
+import{connect} from 'react-redux';
+//import axios from 'axios';
 
 class App extends Component {
+  // state={
+  //   users:{
+  //     id:'',
+  //     first_name:'',
+  //     last_name:'',
+  //     email:'',
+  //     password:'',
+  //     entries:0,
+  //     joined: ''
+  //   }
+  // }
+  
+  // onLoad=(data)=>{
+  //   this.setState(prevState => ({
+  //     user: {                  
+  //         ...prevState.user,    
+  //         first_name: data.first_name,
+  //         last_name:data.last_name,
+  //         email:data.email,
+  //         password:data.password,
+  //         entries:data.entries,
+  //         joined:data.joined
+
+  //     }
+  //  }));
+ // }
 
  
- 
+  // componentDidMount(){
+  //   axios.get('http://localhost:5000/')
+  //   .then(res=>console.log(res.data))
+    
+
+  // }
 
 
   render(){
@@ -17,9 +50,14 @@ class App extends Component {
       <div className="App">
       <Particles/>
       <Switch>
-      <Route exact path="/" component={Signin} />
+      <Route exact path="/">
+      <Redirect to="/signin" />
+      </Route>
+      <Route exact path="/signin" component={Signin} />
       <Route exact path="/home" component={Home} />
-      <Route exact path="/register" component={Register} />
+      <Route exact path="/register" >
+      <Register load={this.props.onLoad}/>
+      </Route>
       </Switch>
     
       </div>
@@ -31,5 +69,22 @@ class App extends Component {
  
   
 }
+// const mapStateToProps=(state)=> {
+//   return {
+//     user:state.users
+//   }
+// }
+const mapDispatchToProps = dispatch => {
+  return {
+    // dispatching plain actions
+    onLoad: (data) =>{
+     // console.log('action file')
+      console.log(data)
+      dispatch({ type: 'REGISTER',data:data })
 
-export default App;
+    } 
+  
+  }
+}
+
+export default connect(null,mapDispatchToProps)(App);

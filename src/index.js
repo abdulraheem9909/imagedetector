@@ -5,13 +5,19 @@ import './index.css';
 import App from './App';
 import 'tachyons';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from 'redux';
+import reducer from'../src/Reducer/userReducer';
+import {Provider} from 'react-redux'
+const store=createStore(reducer);
 
 ReactDOM.render(
+  <Provider store={store}>
   <BrowserRouter>
   <React.StrictMode>
     <App />
   </React.StrictMode>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 
 );

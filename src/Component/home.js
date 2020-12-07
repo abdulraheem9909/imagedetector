@@ -7,6 +7,8 @@ import Rank from './rank/rank';
 import Clarifai from 'clarifai';
 import FaceRecognization from './faceRecong/face';
 import './home.css';
+
+
 const app = new Clarifai.App({
   apiKey: 'd719b8ebdf964155bf75a1a3f612cf7e'
  });
@@ -16,8 +18,11 @@ class App extends Component {
   state={
     input:'',
     url:'',
-    box:{}
+    box:{},
+ 
   }
+
+
 
   onChangeHandler=(event)=>{
     this.setState({input:event.target.value});
@@ -62,7 +67,7 @@ class App extends Component {
 
   }
   onSignoutHandler=()=>{
-    this.props.history.push('/');
+    this.props.history.push('/signin');
   }
 
 
