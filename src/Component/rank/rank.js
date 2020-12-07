@@ -2,13 +2,13 @@ import React from 'react';
 
 
 
- const Rank =()=>{
+ const Rank =(props)=>{
      return(
          <div style={{position:'relative',
                         zIndex:'99'
                     }}>
-         <div className='white f3'>{'jojo, your current rank is'}</div>
-         <div className='white f1 '>{'#3'}</div>
+         <div className='white f3'>{`${props.name}, your current counter is`}</div>
+         <div className='white f1 '>{props.count}</div>
       
          </div>
      

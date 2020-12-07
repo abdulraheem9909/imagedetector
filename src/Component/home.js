@@ -7,6 +7,8 @@ import Rank from './rank/rank';
 import Clarifai from 'clarifai';
 import FaceRecognization from './faceRecong/face';
 import './home.css';
+import Axios from 'axios';
+import {connect} from 'react-redux';
 
 
 const app = new Clarifai.App({
@@ -51,6 +53,20 @@ class App extends Component {
     console.log( ` onclick ${this.state.input}`)
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     .then(response => {
+      if(response){
+        console.log(` id jo pass ho rahi ha put api ma ${this.props.users.id}`)
+        Axios.put('http://localhost:5000/image',{
+          id:this.props.users.id
+          
+        })
+        .then(res=>{
+          console.log(res.data)
+          if(res.data){
+            this.props.onCount(res.data)
+          }
+          
+        })
+      }
      this.displayFaceBox( this.faceCalculation(response));
      
      
@@ -78,7 +94,7 @@ class App extends Component {
       
       <Navbar signout={this.onSignoutHandler} />
       <Logo/>
-      <Rank/>
+      <Rank count={this.props.users.entries} name={this.props.users.first_name}/>
       <Imagelnkform
        changed={this.onChangeHandler}
       clicked={this.onClickedHandler} >
@@ -94,5 +110,24 @@ class App extends Component {
  
   
 }
+const mapStateToProps=state=> {
+  console.log('state in home.js')
+  console.log(state)
+ 
+  return {
+        users:state.users     
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+   
+    onCount: (data) =>{
+      console.log(` in action ${data}`)
+      dispatch({ type: 'COUNTER',data:data })
 
-export default App;
+    } 
+  
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

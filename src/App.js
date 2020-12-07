@@ -53,7 +53,9 @@ class App extends Component {
       <Route exact path="/">
       <Redirect to="/signin" />
       </Route>
-      <Route exact path="/signin" component={Signin} />
+      <Route exact path="/signin">
+      <Signin load={this.props.onLoadSignin}/>
+      </Route> 
       <Route exact path="/home" component={Home} />
       <Route exact path="/register" >
       <Register load={this.props.onLoad}/>
@@ -81,9 +83,12 @@ const mapDispatchToProps = dispatch => {
      // console.log('action file')
       console.log(data)
       dispatch({ type: 'REGISTER',data:data })
+    } ,
+    onLoadSignin: (data) =>{
+      // console.log('action file')
+      dispatch({ type: 'LOGIN',data:data })
+     } 
 
-    } 
-  
   }
 }
 

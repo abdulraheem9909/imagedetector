@@ -46,8 +46,9 @@ import{withRouter}from 'react-router';
   .then(res=>{
       if(res.data)
       {
-          this.props.history.push('home');
+         
           this.props.load(res.data)
+          this.props.history.push('home');
       }
   })
     

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './signin.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import{withRouter}from 'react-router';
 
 
 
@@ -28,8 +29,10 @@ import axios from 'axios';
             password:this.state.password
         })
         .then(res=>{
-            if(res.data==='suceeded')
+            console.log(res.data.id)
+            if(res.data.id)
             {
+                this.props.load(res.data);
                 this.props.history.push('home');
             }
         });
@@ -76,4 +79,4 @@ import axios from 'axios';
      
     
  }
- export default SignIn;
+ export default withRouter(SignIn);
