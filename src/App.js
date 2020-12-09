@@ -5,6 +5,7 @@ import Home from './Component/home';
 import Particles from './UI/particles';
 import Register from './Component/Register/register';
 import{connect} from 'react-redux';
+import Logo from './Component/logo/logo';
 //import axios from 'axios';
 
 class App extends Component {
@@ -54,10 +55,12 @@ class App extends Component {
       <Redirect to="/signin" />
       </Route>
       <Route exact path="/signin">
-      <Signin load={this.props.onLoadSignin}/>
+      <Logo/>
+      <Signin load={this.props.onLoad}/>
       </Route> 
       <Route exact path="/home" component={Home} />
       <Route exact path="/register" >
+      <Logo/>
       <Register load={this.props.onLoad}/>
       </Route>
       </Switch>
@@ -83,11 +86,11 @@ const mapDispatchToProps = dispatch => {
      // console.log('action file')
       console.log(data)
       dispatch({ type: 'REGISTER',data:data })
-    } ,
-    onLoadSignin: (data) =>{
-      // console.log('action file')
-      dispatch({ type: 'LOGIN',data:data })
-     } 
+    } 
+    // onLoadSignin: (data) =>{
+    //   // console.log('action file')
+    //   dispatch({ type: 'LOGIN',data:data })
+    //  } 
 
   }
 }
