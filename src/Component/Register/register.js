@@ -44,10 +44,12 @@ import{withRouter}from 'react-router';
 
   })
   .then(res=>{
-      if(res.data)
+      if(res.data.id)
       {
          
           this.props.load(res.data)
+          
+         
           this.props.history.push('home');
       }
   })
@@ -79,7 +81,7 @@ import{withRouter}from 'react-router';
           </div>
           <div className="mt3">
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-              <input onChange={this.onchangeEmail} className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
+              <input onChange={this.onchangeEmail} className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address" />
           </div>
           <div className="mv3">
               <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
